@@ -1,5 +1,10 @@
 .header {
    padding-top: 30px;
+   position: sticky;
+   top: 0;
+   background-color: #fff;
+   z-index: 9999;
+   box-shadow: 0px 2px 30px 0px rgb(204, 204, 204);
 }
 
 .header-content {
@@ -58,6 +63,7 @@
    flex-direction: column;
    align-items: center;
    color: var(--color-main);
+   position: relative;
 
    svg {
       width: 25px;
@@ -167,3 +173,13 @@
       stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1),
       stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.favorite-length {
+   position: absolute;
+   background-color: var(--color-accent);
+   padding: 5px 10px;
+   border-radius: 10px;
+   right: 5px;
+   top: -15px;
+}
+

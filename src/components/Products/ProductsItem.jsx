@@ -1,8 +1,7 @@
 import './products.scss';
 
-const ProductsItem = ({ item, index }) => {
+const ProductsItem = ({ item, index, toggleFavorite, favorite }) => {
    const absolutePath = import.meta.env.BASE_URL + item.imageUrl;
-
 
    return (
       <div className="products-card" key={index}>
@@ -11,7 +10,7 @@ const ProductsItem = ({ item, index }) => {
 
          <div className="price_and_basket">
             <span className='products-card__price'>{item.price} &#8381;</span>
-            <button className='liked'>
+            <button className={`liked ${favorite.includes(item.id) ? 'active' : ''}`} onClick={() => toggleFavorite(item.id)}>
                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fillRule="currentColor" className="bi bi-heart-fill" viewBox="0 0 16 16">
                   <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                </svg>
