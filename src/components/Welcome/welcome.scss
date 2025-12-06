@@ -1,0 +1,45 @@
+.welcome {
+   margin-top: 50px;
+}
+
+.welcome-content {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.holodilnik-wrapper {
+   display: flex;
+   align-items: center;
+   gap: 30px;
+   width: 200px;
+   font-size: 40px;
+   font-weight: 500;
+
+   img {
+      object-fit: contain;
+      width: auto;
+      height: 300px;
+   }
+}
+
+.dop-wrapper {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   column-gap: 30px;
+   row-gap: 70px;
+   align-items: center;
+}
+
+.dop-card {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 18px;
+
+   img {
+      object-fit: contain;
+      width: 110px;
+      height: auto;
+   }
+}

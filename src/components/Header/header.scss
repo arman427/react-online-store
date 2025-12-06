@@ -19,23 +19,6 @@
    font-size: 55px;
 }
 
-.catalog {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   gap: 10px;
-   font-size: 18px;
-   background-color: var(--color-accent);
-   height: 50px;
-   padding: 0px 25px;
-   color: var(--color-bg);
-   border-radius: 5px;
-
-   &:hover {
-      background-color: rgb(115, 255, 0);
-   }
-}
-
 .search-wrapper {
    // margin-left: -40px;
    width: 650px;
@@ -47,7 +30,6 @@
 
    input {
       width: 100%;
-      // padding: 0 30px;
 
       &::placeholder {
          font-size: 16px;
@@ -59,7 +41,11 @@
 .search-icon {
    display: flex;
    width: 30px;
+   fill: #666;
 
+   &:hover {
+      fill: var(--color-main);
+   }
 }
 
 .user-content {
@@ -76,13 +62,90 @@
    svg {
       width: 25px;
    }
+
+   &:hover {
+      color: #666;
+   }
 }
 
+.catalog-wrapper {
+   position: relative;
+}
 
+.modal-Catalog {
+   position: absolute;
+   background-color: var(--color-bg);
+   width: 200px;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0px 2px 30px 0px rgb(204, 204, 204);
+   transform-origin: top bottom;
+   opacity: 0;
+   transition:
+      transform 0.3s ease 0s,
+      opacity 0.3s ease 0s,
+      z-index 0s 0s;
+   transform: translateY(-30px);
+   pointer-events: none;
+
+   &.active_catalog {
+      opacity: 1;
+      transform: translateY(0px);
+   }
+
+   li {
+      padding: 5px 0;
+   }
+
+   a, li {
+      color: var(--color-main);
+      pointer-events: all;
+
+      &:hover {
+         color: #777;
+
+      }
+   }
+}
+
+.catalog {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 10px;
+   font-size: 18px;
+   background-color: var(--color-accent);
+   height: 50px;
+   padding: 0px 25px;
+   color: var(--color-bg);
+   border-radius: 5px;
+
+   &:hover {
+      background-color: rgb(115, 255, 0);
+   }
+
+   .hamburger_active {
+
+      input,
+      svg {
+         transform: rotate(-45deg);
+      }
+
+      svg .line-top-bottom {
+         stroke-dasharray: 20 300;
+         stroke-dashoffset: -32.42;
+      }
+   }
+}
+
+.line-top-bottom {
+   stroke-dasharray: 12 63;
+}
 
 .hamburger {
    cursor: pointer;
    display: flex;
+   pointer-events: none;
 }
 
 .hamburger input {
@@ -91,7 +154,7 @@
 
 .hamburger svg {
    height: 2.3em;
-   transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+   transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .line {
@@ -101,19 +164,6 @@
    stroke-linejoin: round;
    stroke-width: 3;
    transition:
-      stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.line-top-bottom {
-   stroke-dasharray: 12 63;
-}
-
-.hamburger input:checked+svg {
-   transform: rotate(-45deg);
-}
-
-.hamburger input:checked+svg .line-top-bottom {
-   stroke-dasharray: 20 300;
-   stroke-dashoffset: -32.42;
+      stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
