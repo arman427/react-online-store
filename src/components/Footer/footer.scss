@@ -1,0 +1,126 @@
+.footer {
+   // margin-bottom: 100px;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+   display: flex;
+   align-items: flex-start;
+   padding-bottom: 30px;
+}
+
+.footer-desc {
+   width: 700px;
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+
+   .logo {
+      width: 30%;
+   }
+}
+
+.footer-phone {
+   font-size: 20px;
+   color: var(--color-main);
+   font-weight: 600;
+   width: 30%;
+
+   &:hover {
+      color: #777;
+   }
+}
+
+.footer-social {
+   p {
+      font-size: 15px;
+      font-weight: 600;
+   }
+}
+
+.footer-social__wrapper {
+   display: flex;
+   align-items: center;
+   gap: 15px;
+   margin-top: 10px;
+
+
+   svg {
+      width: 25px;
+      color: var(--color-accent);
+   }
+
+   a {
+      position: relative;
+
+      &:hover {
+         span {
+            scale: 1;
+         }
+      }
+   }
+}
+
+.footer-nav {
+   display: flex;
+
+   ul {
+      padding-right: 90px;
+   }
+
+   p {
+      font-weight: 500;
+      margin-bottom: 20px;
+   }
+
+   a {
+      color: var(--color-main);
+
+      &:hover {
+         color: var(--color-accent);
+      }
+   }
+
+   li+li {
+      margin-top: 10px;
+   }
+}
+
+
+.footer-social span {
+   background: var(--color-accent);
+   color: var(--color-main);
+   font-size: 14px;
+   padding: 5px 15px;
+   border-radius: 10px;
+   position: absolute;
+   transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+   transform-origin: top center;
+   scale: 0;
+}
+
+.telegram-link-span {
+   top: 30px;
+   left: -29px;
+}
+
+.youtube-link-span {
+   top: 30px;
+   left: -27px;
+}
+
+.whatsapp-link-span {
+   top: 30px;
+   left: -34px;
+}
+
+.github-link-span {
+   top: 30px;
+   left: -24px;
+}
+
+.copyrating {
+   padding-top: 30px;
+   text-align: center;
+   padding-bottom: 10px;
+}
