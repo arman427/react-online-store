@@ -124,7 +124,7 @@ function App() {
 
    return (
       <>
-         <BrowserRouter basename="/react-online-store">
+         <BrowserRouter basename="/react-online-store/">
             <App__ />
          </BrowserRouter>
       </>
