@@ -42,9 +42,9 @@ const Header = ({ onChangeSearch, onChangeCategory, favorite, basket }) => {
                </div>
                <div className="header-content">
                   <div className="logo__catalog">
-                     <a href='/' className="logo">
+                     <Link to='/' className="logo">
                         GearUp
-                     </a>
+                     </Link>
 
                      <div className="catalog-wrapper">
                         <button className="catalog" onClick={handleClickCatalog}>

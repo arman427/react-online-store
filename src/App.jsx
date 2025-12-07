@@ -62,7 +62,7 @@ function App() {
       basket.includes(item.id)
    )
 
-   const App__ = ({ isAuth, handleLogin }) => {
+   const App__ = () => {
       const location = useLocation();
       const showWelcome = location.pathname !== '/react-online-store/basket' && location.pathname !== '/basket';
       const authPaths = [
@@ -78,7 +78,6 @@ function App() {
          <>
             {showCommonBlocks && (
                <Header
-                  isAuth={isAuth}
                   onChangeSearch={setSearchValue}
                   onChangeCategory={setActiveCategory}
                   favorite={favorite__}
