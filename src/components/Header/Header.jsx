@@ -42,7 +42,7 @@ const Header = ({ onChangeSearch, onChangeCategory, favorite, basket }) => {
                </div>
                <div className="header-content">
                   <div className="logo__catalog">
-                     <Link to='/' className="logo">
+                     <Link to={'/'} className="logo" onClick={() => window.reload()}>
                         GearUp
                      </Link>
 
@@ -58,7 +58,7 @@ const Header = ({ onChangeSearch, onChangeCategory, favorite, basket }) => {
                                  <path className="line" d="M7 16 27 16"></path>
                               </svg>
                            </label>
-                           Сортировка
+                           Каталог
                         </button>
                         <div className={`modal-Catalog ${catalogOpen ? 'active_catalog' : ''}`}>
                            <ul className="catalog-list">

@@ -143,7 +143,7 @@ const products = [
       id: 21,
       name: 'Телевизор Dreame Aura Mini LED 4K TV',
       price: 172999,
-      imageUrl: '/public/images/aura_tele.webp',
+      imageUrl: '/images/aura_tele.webp',
       category: 'Телевизоры'
    },
    {
