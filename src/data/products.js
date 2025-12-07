@@ -108,7 +108,7 @@ const products = [
       id: 16,
       name: 'Телевизор Toshiba 100Z670NE',
       price: 247999,
-      imageUrl: '/images/toshiba.avif',
+      imageUrl: '/images/toshiba_tele.webp',
       category: 'Телевизоры'
    },
    {
@@ -143,7 +143,7 @@ const products = [
       id: 21,
       name: 'Телевизор Dreame Aura Mini LED 4K TV',
       price: 172999,
-      imageUrl: '/images/aura.avif',
+      imageUrl: '/public/images/aura_tele.webp',
       category: 'Телевизоры'
    },
    {

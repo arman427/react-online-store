@@ -1,22 +1,27 @@
 import './styles/reset.scss';
 import './styles/base.scss';
 import { useState } from 'react';
+
 import products from './data/products.js';
 import Header from './components/Header/Header.jsx';
 import Welcome from "./components/Welcome/Welcome.jsx";
 import Products from "./components/Products/Products.jsx";
-
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Favorite from './components/Favorite/Favorite.jsx';
 import Basket from './components/Basket/Basket.jsx';
 import Footer from './components/Footer/Footer.jsx';
+import About from './components/About/About.jsx';
+import Contact from './components/Contact/Contact.jsx';
+import Help from './components/Help/Help.jsx';
+import Register from './components/Register/Register.jsx';
+import Login from './components/Login/Login.jsx';
+
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 function App() {
    const [searchValue, setSearchValue] = useState('');
    const [activeCategory, setActiveCategory] = useState(null);
    const [favorite, setFavorite] = useState([]);
    const [basket, setBasket] = useState([]);
-
 
    // -------------- Сортировка по категории, и поиск --------------
    const filteredProducts = products.filter(item => {
@@ -57,13 +62,31 @@ function App() {
       basket.includes(item.id)
    )
 
-   const WelcomeClear = () => {
+   const App__ = ({ isAuth, handleLogin }) => {
       const location = useLocation();
       const showWelcome = location.pathname !== '/react-online-store/basket' && location.pathname !== '/basket';
+      const authPaths = [
+         '/react-online-store/register',
+         '/register',
+         '/react-online-store/login',
+         '/login'
+      ];
+
+      const showCommonBlocks = !authPaths.includes(location.pathname);
 
       return (
          <>
-            {showWelcome && <Welcome />}
+            {showCommonBlocks && (
+               <Header
+                  isAuth={isAuth}
+                  onChangeSearch={setSearchValue}
+                  onChangeCategory={setActiveCategory}
+                  favorite={favorite__}
+                  basket={basket__}
+               />
+            )}
+
+            {showCommonBlocks && showWelcome && <Welcome />}
 
             <Routes>
                <Route path='/' element={<Products
@@ -85,8 +108,16 @@ function App() {
                   toggleBasket={toggleBasket}
                   basket__={basket__}
                   basket={basket}
-               />} />
+               />}
+               />
+               <Route path='/about' element={<About />} />
+               <Route path='/contact' element={<Contact />} />
+               <Route path='/help' element={<Help />} />
+               <Route path='/register' element={<Register />} />
+               <Route path='/login' element={<Login />} />
             </Routes>
+
+            {showCommonBlocks && <Footer />}
          </>
       )
    }
@@ -94,17 +125,7 @@ function App() {
    return (
       <>
          <BrowserRouter basename="/react-online-store">
-            <Header
-               onChangeSearch={setSearchValue}
-               onChangeCategory={setActiveCategory}
-               favorite={favorite__}
-               basket={basket__}
-            />
-
-            <WelcomeClear />
-
-            
-            <Footer />
+            <App__ />
          </BrowserRouter>
       </>
    )

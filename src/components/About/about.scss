@@ -1,0 +1,25 @@
+.about {
+   margin: 100px 0;
+}
+
+.about-content {
+}
+
+.about h2 {
+   font-size: 30px;
+   font-weight: 500;
+}
+
+.about p {
+   margin: 30px 0;
+   word-wrap: break-word;
+}
+
+.about ul {
+   display: grid;
+   gap: 5px;
+}
+
+.about li {
+   list-style: disc;
+}

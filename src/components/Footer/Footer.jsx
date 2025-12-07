@@ -1,6 +1,7 @@
+import { Link, NavLink } from 'react-router-dom';
 import './footer.scss';
 
-const Footer = () => {
+const Footer = (isAuth) => {
    return (
       <>
          <footer className="footer">
@@ -46,14 +47,14 @@ const Footer = () => {
                   <nav className="footer-nav">
                      <ul>
                         <p>О магазине</p>
-                        <li><a href="">О компании</a></li>
-                        <li><a href="">Каталог</a></li>
-                        <li><a href="">Контакты</a></li>
+                        <li><NavLink to={'/about'}>О компании</NavLink></li>
+                        <li><NavLink to={'/'} onClick={() => window.reload()}>Каталог</NavLink></li>
+                        <li><NavLink to={'/contact'}>Контакты</NavLink></li>
                      </ul>
                      <ul>
                         <p>Клиентам</p>
-                        <li><a href="">Личный кабинет</a></li>
-                        <li><a href="">Поддержка</a></li>
+                        <li><NavLink to={'/user'}>Личный кабинет</NavLink></li>
+                        <li><NavLink to={'/help'}>Поддержка</NavLink></li>
                      </ul>
                   </nav>
 
@@ -61,7 +62,7 @@ const Footer = () => {
 
             </div>
          </footer>
-         <p className='copyrating'>@2025</p>
+         <p className='copyrating'>@ 2025</p>
       </>
    );
 }

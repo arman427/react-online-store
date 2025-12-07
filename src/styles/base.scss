@@ -19,10 +19,6 @@ body {
    line-height: 1.5;
    text-align: left;
    overflow-x: hidden;
-
-   &.modal-open {
-      overflow-y: hidden;
-   }
 }
 
 .container {

@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import './products.scss';
 import ProductsItem from './ProductsItem';
+import { useNavigate } from 'react-router-dom';
 
 const Products = ({ products, toggleFavorite, toggleBasket, favorite, basket}) => {
+   // const navigate = useNavigate();
 
-   // console.log(favorite__);
+   // useEffect(() => {
+   //    navigate('/register')
+   // }, []);
 
    return (
       <section className="products">

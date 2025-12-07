@@ -1,0 +1,41 @@
+.help {
+   margin: 100px 0;
+}
+
+.help-title {
+   font-size: 30px;
+   font-weight: 500;
+   margin-bottom: 10px;
+}
+
+.vopros-wrapper {
+   textarea {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      resize: none;
+      outline: none;
+      padding: 10px;
+   }
+}
+
+.email-wrapper {
+   input {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      width: 387px;
+   }
+}
+
+.form-button {
+   margin-top: 20px;
+   background-color: var(--color-accent);
+   color: var(--color-bg);
+   padding: 10px 30px;
+   border: 1px solid transparent;
+   border-radius: 5px;
+
+   &:hover {
+      background-color: var(--color-bg);
+      color: var(--color-main);
+      border: 1px solid var(--color-main);
+   }
+}
