@@ -1,6 +1,6 @@
 import './styles/reset.scss';
 import './styles/base.scss';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import products from './data/products.js';
 import Header from './components/Header/Header.jsx';
@@ -24,11 +24,13 @@ function App() {
    const [basket, setBasket] = useState([]);
 
    // -------------- Сортировка по категории, и поиск --------------
-   const filteredProducts = products.filter(item => {
-      const search = item.name.toLowerCase().includes(searchValue.toLowerCase());
-      const category = activeCategory === null || item.category === activeCategory;
-      return search && category;
-   });
+   const filteredProducts = useMemo(() => {
+      return products.filter(item => {
+         const search = item.name.toLowerCase().includes(searchValue.toLowerCase());
+         const category = activeCategory === null || item.category === activeCategory;
+         return search && category;
+      });
+   }, [products, searchValue, activeCategory]);
 
 
    // -------------- Если был в массиве то удалять, если нет то копировать старый и добавлять id --------------
@@ -40,13 +42,13 @@ function App() {
             setFavorite([...favorite, id]);
          }, 200)
       }
-   }
+   };
 
 
    // -------------- Фильтруем все продукты, если если id есть в массиве избранных id --------------
    const favorite__ = products.filter(item =>
       favorite.includes(item.id)
-   )
+   );
 
    const toggleBasket = (id) => {
       if (basket.includes(id)) {
@@ -56,36 +58,23 @@ function App() {
             setBasket([...basket, id]);
          }, 200)
       }
-   }
+   };
 
    const basket__ = products.filter(item =>
       basket.includes(item.id)
-   )
+   );
 
-   const App__ = () => {
-      const location = useLocation();
-      const showWelcome = location.pathname !== '/react-online-store/basket' && location.pathname !== '/basket';
-      const authPaths = [
-         '/react-online-store/register',
-         '/register',
-         '/react-online-store/login',
-         '/login'
-      ];
 
-      const showCommonBlocks = !authPaths.includes(location.pathname);
-
-      return (
-         <>
-            {showCommonBlocks && (
-               <Header
-                  onChangeSearch={setSearchValue}
-                  onChangeCategory={setActiveCategory}
-                  favorite={favorite__}
-                  basket={basket__}
-               />
-            )}
-
-            {showCommonBlocks && showWelcome && <Welcome />}
+   return (
+      <>
+         <BrowserRouter basename="/react-online-store/">
+            <Header
+               onChangeSearch={setSearchValue}
+               searchValue={searchValue}
+               onChangeCategory={setActiveCategory}
+               favorite={favorite__}
+               basket={basket__}
+            />
 
             <Routes>
                <Route path='/' element={<Products
@@ -109,6 +98,7 @@ function App() {
                   basket={basket}
                />}
                />
+
                <Route path='/about' element={<About />} />
                <Route path='/contact' element={<Contact />} />
                <Route path='/help' element={<Help />} />
@@ -116,18 +106,10 @@ function App() {
                <Route path='/login' element={<Login />} />
             </Routes>
 
-            {showCommonBlocks && <Footer />}
-         </>
-      )
-   }
-
-   return (
-      <>
-         <BrowserRouter basename="/react-online-store/">
-            <App__ />
+            <Footer />
          </BrowserRouter>
       </>
-   )
+   );
 }
 
 export default App;

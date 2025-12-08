@@ -1,5 +1,9 @@
 .welcome {
    margin-top: 50px;
+
+   @media only screen and (max-width: 1100px) {
+      display: none;
+   }
 }
 
 .welcome-content {

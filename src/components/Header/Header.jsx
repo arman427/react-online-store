@@ -3,8 +3,9 @@ import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import categories from '../../data/categories.js';
 
-const Header = ({ onChangeSearch, onChangeCategory, favorite, basket }) => {
+const Header = ({ onChangeSearch, searchValue, onChangeCategory, favorite, basket }) => {
    const [catalogOpen, setCatalogOpen] = useState(false);
+   const [visible, setVisible] = useState(false);
 
    const handleClickCatalog = () => {
       setCatalogOpen(!catalogOpen)
@@ -14,17 +15,30 @@ const Header = ({ onChangeSearch, onChangeCategory, favorite, basket }) => {
       onChangeSearch(event.target.value);
    }
 
-   useEffect(() => {
-      if (catalogOpen) {
-         document.body.classList.add('modal-open');
+   const scrollToTop = () => {
+      window.scrollTo({
+         top: 0,
+         behavior: 'smooth'
+      });
+   };
+
+   const handleScroll = () => {
+      if (window.pageYOffset > 300) {
+         setVisible(true);
       } else {
-         document.body.classList.remove('modal-open');
+         setVisible(false);
       }
+   };
+
+   useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
 
       return () => {
-         document.body.classList.remove('modal-open');
+         window.removeEventListener('scroll', handleScroll);
       };
-   }, [catalogOpen]);
+
+   }, []);
+
 
    return (
       <>
@@ -83,7 +97,7 @@ const Header = ({ onChangeSearch, onChangeCategory, favorite, basket }) => {
 
 
                   <div className="search-wrapper">
-                     <input type="text" placeholder='Поиск...' onChange={onChangeValueSearch} />
+                     <input type="text" placeholder='Поиск...' onChange={onChangeValueSearch} value={searchValue} />
                   </div>
 
                   <div className="user-content">
@@ -113,6 +127,10 @@ const Header = ({ onChangeSearch, onChangeCategory, favorite, basket }) => {
 
             </div>
          </header >
+
+         <button className={`toTop ${visible ? 'active' : ''}`} onClick={scrollToTop}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-arrow-up-icon lucide-arrow-up"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg>
+         </button>
       </>
    );
 }

@@ -5,7 +5,9 @@ const ProductsItem = ({ item, index, toggleFavorite, toggleBasket, favorite, bas
 
    return (
       <div className="products-card" key={index}>
-         <img src={absolutePath} alt="" className='products-card__image' />
+         <div className="products-card-image__wrapper">
+            <img src={absolutePath} alt="" className='products-card__image' />
+         </div>
          <h4 className='products-card__title'>{item.name}</h4>
 
          <div className="price_and_basket">
