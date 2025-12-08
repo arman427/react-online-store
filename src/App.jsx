@@ -1,10 +1,8 @@
 import './styles/reset.scss';
 import './styles/base.scss';
 import { useMemo, useState } from 'react';
-
 import products from './data/products.js';
 import Header from './components/Header/Header.jsx';
-import Welcome from "./components/Welcome/Welcome.jsx";
 import Products from "./components/Products/Products.jsx";
 import Favorite from './components/Favorite/Favorite.jsx';
 import Basket from './components/Basket/Basket.jsx';
@@ -15,7 +13,7 @@ import Help from './components/Help/Help.jsx';
 import Register from './components/Register/Register.jsx';
 import Login from './components/Login/Login.jsx';
 
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 function App() {
    const [searchValue, setSearchValue] = useState('');
@@ -67,7 +65,7 @@ function App() {
 
    return (
       <>
-         <BrowserRouter basename="/react-online-store/">
+         <Router basename="/react-online-store/">
             <Header
                onChangeSearch={setSearchValue}
                searchValue={searchValue}
@@ -107,7 +105,7 @@ function App() {
             </Routes>
 
             <Footer />
-         </BrowserRouter>
+         </Router>
       </>
    );
 }
