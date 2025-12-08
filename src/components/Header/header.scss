@@ -169,6 +169,7 @@
    transition: all 0.3s ease;
    transform: translateY(-30px);
    pointer-events: none;
+   z-index: -99;
 
    &.active_catalog {
       opacity: 1;

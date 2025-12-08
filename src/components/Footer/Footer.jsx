@@ -48,7 +48,7 @@ const Footer = () => {
                      <ul>
                         <p>О магазине</p>
                         <li><NavLink to={'/about'}>О компании</NavLink></li>
-                        <li><NavLink to={'/'} onClick={() => window.reload()}>Каталог</NavLink></li>
+                        <li><NavLink to={'/'}>Каталог</NavLink></li>
                         <li><NavLink to={'/contact'}>Контакты</NavLink></li>
                      </ul>
                      <ul>

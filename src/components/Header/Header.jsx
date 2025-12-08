@@ -56,7 +56,7 @@ const Header = ({ onChangeSearch, searchValue, onChangeCategory, favorite, baske
                </div>
                <div className="header-content">
                   <div className="logo__catalog">
-                     <Link to={'/'} className="logo" onClick={() => window.reload()}>
+                     <Link to='/' className="logo" onClick={() => onChangeCategory(null)}>
                         GearUp
                      </Link>
 
@@ -78,8 +78,8 @@ const Header = ({ onChangeSearch, searchValue, onChangeCategory, favorite, baske
                            <ul className="catalog-list">
                               {categories.map((item, index) => (
                                  <li key={index}>
-                                    <a
-                                       href="#!"
+                                    <Link
+                                       href=""
                                        key={index}
                                        onClick={() => {
                                           onChangeCategory(item);
@@ -87,7 +87,7 @@ const Header = ({ onChangeSearch, searchValue, onChangeCategory, favorite, baske
                                        }}
                                     >
                                        {item}
-                                    </a>
+                                    </Link>
                                  </li>
                               ))}
                            </ul>

@@ -65,7 +65,7 @@ function App() {
 
    return (
       <>
-         <Router basename="/react-online-store/">
+         <Router>
             <Header
                onChangeSearch={setSearchValue}
                searchValue={searchValue}
